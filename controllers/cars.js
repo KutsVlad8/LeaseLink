@@ -1,8 +1,8 @@
 const Cars = require("../models/cars");
 
 // const Joi = require("joi");
-// const { HttpError, ctrlWrapper } = require("../helpers");
-const { ctrlWrapper } = require("../helpers");
+const { HttpError, ctrlWrapper } = require("../helpers");
+// const { ctrlWrapper } = require("../helpers");
 
 // !=================== joi Schemas ================
 
@@ -26,6 +26,8 @@ const { ctrlWrapper } = require("../helpers");
 
 // !=================== controllers ================
 
+// !======== контроллер для всех объявлени  машин ===========
+
 const getAll = async (req, res) => {
   // const { _id } = req.cars;
 
@@ -41,16 +43,19 @@ const getAll = async (req, res) => {
   res.json(result);
 };
 
-// const getContactById = async (req, res) => {
-//   const { _id: owner } = req.user;
-//   const { contactId } = req.params;
-//   const result = await Contact.findOne({ _id: contactId, owner });
+// !======== контроллер для одного объявления  машины ===========
 
-//   if (!result) {
-//     throw HttpError(404, "Not found");
-//   }
-//   res.json(result);
-// };
+const getCarById = async (req, res) => {
+  const { carId } = req.params;
+  const result = await Cars.findOne({ _id: carId });
+
+  if (!result) {
+    throw HttpError(404, "Not found");
+  }
+  res.json(result);
+};
+
+// !======== контроллер для создания объявления ===========
 
 // const create = async (req, res) => {
 //   const { _id: owner } = req.user;
@@ -63,6 +68,8 @@ const getAll = async (req, res) => {
 //   const result = await Contact.create({ ...req.body, owner });
 //   res.status(201).json(result);
 // };
+
+// !======== контроллер для изменения объявления ===========
 
 // const updateContact = async (req, res) => {
 //   const { _id: owner } = req.user;
@@ -86,6 +93,7 @@ const getAll = async (req, res) => {
 //   res.json(result);
 // };
 
+// !======== контроллер для добавления объявления в избранное  ===========
 // const updateFavorite = async (req, res) => {
 //   const { _id: owner } = req.user;
 
@@ -108,6 +116,8 @@ const getAll = async (req, res) => {
 //   res.json(result);
 // };
 
+// !======== контроллер для удаления объявления ===========
+
 // const remove = async (req, res) => {
 //   const { _id: owner } = req.user;
 //   const { contactId } = req.params;
@@ -124,7 +134,7 @@ const getAll = async (req, res) => {
 
 module.exports = {
   getAll: ctrlWrapper(getAll),
-  // getContactById: ctrlWrapper(getContactById),
+  getCarById: ctrlWrapper(getCarById),
   // create: ctrlWrapper(create),
   // updateContact: ctrlWrapper(updateContact),
   // updateFavorite: ctrlWrapper(updateFavorite),
