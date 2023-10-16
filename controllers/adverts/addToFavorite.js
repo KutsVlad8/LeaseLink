@@ -1,4 +1,4 @@
-const Cars = require("../../models/cars");
+const Adverts = require("../../models/adverts");
 const Joi = require("joi");
 
 const { HttpError } = require("../../helpers");
@@ -15,7 +15,7 @@ const addFavorite = async (req, res) => {
     throw HttpError(400, "missing field favorite");
   }
   const { contactId } = req.params;
-  const result = await Cars.findOneAndUpdate(
+  const result = await Adverts.findOneAndUpdate(
     { _id: contactId, owner },
     req.body,
     {

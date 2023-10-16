@@ -1,4 +1,4 @@
-const Cars = require("../../models/cars");
+const Adverts = require("../../models/adverts");
 const Joi = require("joi");
 
 const { HttpError } = require("../../helpers");
@@ -18,7 +18,7 @@ const createAdvert = async (req, res) => {
     throw HttpError(404, "missing required name field");
   }
 
-  const result = await Cars.create({ ...req.body, owner });
+  const result = await Adverts.create({ ...req.body, owner });
   res.status(201).json(result);
 };
 
