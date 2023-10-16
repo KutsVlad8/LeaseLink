@@ -1,5 +1,5 @@
 const ctrlAdverts = require("./adverts");
-const ctrlAuth = require("./auth/auth");
+const ctrlAuth = require("./auth");
 
 module.exports = {
   ctrlAdverts,
