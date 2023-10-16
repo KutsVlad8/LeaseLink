@@ -1,24 +1,12 @@
 const User = require("../../models/user");
-const Joi = require("joi");
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { HttpError } = require("../../helpers");
 
-const emailRegexp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const { SECRET_KEY } = process.env;
 
-const logInSchema = Joi.object({
-  email: Joi.string().pattern(emailRegexp).required(),
-  password: Joi.string().min(6).required(),
-});
-
 const logIn = async (req, res) => {
-  const { error } = logInSchema.validate(req.body);
-  if (error) {
-    throw HttpError(404, "missing required  field");
-  }
-
   const { email, password } = req.body;
   const user = await User.findOne({ email });
 

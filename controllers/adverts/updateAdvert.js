@@ -1,4 +1,4 @@
-const Cars = require("../../models/cars");
+const Adverts = require("../../models/adverts");
 const Joi = require("joi");
 
 const { HttpError } = require("../../helpers");
@@ -18,7 +18,7 @@ const updateAdvert = async (req, res) => {
     throw HttpError(404, "missing required name field");
   }
   const { contactId } = req.params;
-  const result = await Cars.findOneAndUpdate(
+  const result = await Adverts.findOneAndUpdate(
     { _id: contactId, owner },
     req.body,
     {

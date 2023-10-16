@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const { handleMongooseError } = require("../helpers");
 
-const carsSchema = new Schema(
+const advertsSchema = new Schema(
   {
     year: {
       type: Number,
@@ -72,8 +72,8 @@ const carsSchema = new Schema(
   { versionKey: false, timestamps: true }
 );
 
-carsSchema.post("save", handleMongooseError);
+advertsSchema.post("save", handleMongooseError);
 
-const Cars = model("cars", carsSchema);
+const Adverts = model("adverts", advertsSchema);
 
-module.exports = Cars;
+module.exports = Adverts;

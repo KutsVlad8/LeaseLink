@@ -1,4 +1,4 @@
-const Cars = require("../../models/cars");
+const Adverts = require("../../models/adverts");
 
 const getAll = async (req, res) => {
   // const { _id } = req.cars;
@@ -11,7 +11,7 @@ const getAll = async (req, res) => {
   //   limit,
   // });
 
-  const result = await Cars.find();
+  const result = await Adverts.find();
   res.json(result);
 };
 
