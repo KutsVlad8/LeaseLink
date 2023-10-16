@@ -1,4 +1,4 @@
-const Cars = require("../models/cars");
+const Cars = require("../../models/cars");
 
 const getAll = async (req, res) => {
   // const { _id } = req.cars;

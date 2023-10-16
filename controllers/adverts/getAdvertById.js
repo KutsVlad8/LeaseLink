@@ -1,10 +1,10 @@
-const Cars = require("../models/cars");
+const Cars = require("../../models/cars");
 
-const { HttpError } = require("../helpers");
+const { HttpError } = require("../../helpers");
 
-const getCarById = async (req, res) => {
-  const { carId } = req.params;
-  const result = await Cars.findOne({ _id: carId });
+const getAdvertById = async (req, res) => {
+  const { advertId } = req.params;
+  const result = await Cars.findOne({ _id: advertId });
 
   if (!result) {
     throw HttpError(404, "Not found");
@@ -12,4 +12,4 @@ const getCarById = async (req, res) => {
   res.json(result);
 };
 
-module.exports = getCarById;
+module.exports = getAdvertById;

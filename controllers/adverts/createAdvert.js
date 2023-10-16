@@ -1,7 +1,7 @@
-const Cars = require("../models/cars");
+const Cars = require("../../models/cars");
 const Joi = require("joi");
 
-const { HttpError } = require("../helpers");
+const { HttpError } = require("../../helpers");
 
 const addSchema = Joi.object({
   name: Joi.string().required(),

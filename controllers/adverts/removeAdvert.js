@@ -1,6 +1,6 @@
-const Cars = require("../models/cars");
+const Cars = require("../../models/cars");
 
-const { HttpError } = require("../helpers");
+const { HttpError } = require("../../helpers");
 
 const removeAdvert = async (req, res) => {
   const { _id: owner } = req.user;
