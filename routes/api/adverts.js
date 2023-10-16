@@ -40,7 +40,11 @@ router.put(
 //   ctrlAdverts.addToFavorite
 // );
 
-router.patch("/:advertId/favorite", ctrlAdverts.addToFavorite);
+router.patch(
+  "/:advertId/favorite",
+  validateBody(advertsSchema.favoriteSchema),
+  ctrlAdverts.addToFavorite
+);
 
 // ?======== запрос для удаления объявления ===========
 // router.delete("/:advertId", authenticate, isValidId, ctrlAdverts.removeAdvert);
