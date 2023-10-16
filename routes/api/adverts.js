@@ -2,10 +2,7 @@ const express = require("express");
 
 const { ctrlAdverts } = require("../../controllers");
 const validateBody = require("../../middlewares/validateBody");
-const {
-  createAdvertSchema,
-  updateAdvertSchema,
-} = require("../../models/adverts");
+const { advertsSchema } = require("../../schemas");
 
 // const { isValidId, authenticate } = require("../../middlewares");
 
@@ -21,13 +18,17 @@ router.get("/:advertId", ctrlAdverts.getAdvertById);
 
 // ?======== запрос для создания объявления ===========
 // router.post("/", authenticate, ctrlAdverts.createAdvert);
-router.post("/", validateBody(createAdvertSchema), ctrlAdverts.createAdvert);
+router.post(
+  "/",
+  validateBody(advertsSchema.createAdvertSchema),
+  ctrlAdverts.createAdvert
+);
 
 // ?======== запрос для изменения объявления ===========
 // router.put("/:advertId", authenticate, isValidId, ctrlAdverts.updateContact);
 router.put(
   "/:advertId",
-  validateBody(updateAdvertSchema),
+  validateBody(advertsSchema.updateAdvertSchema),
   ctrlAdverts.updateAdvert
 );
 

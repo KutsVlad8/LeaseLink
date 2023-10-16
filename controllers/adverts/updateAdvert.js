@@ -1,4 +1,4 @@
-const { Adverts } = require("../../models/adverts");
+const Adverts = require("../../models/adverts");
 
 const { HttpError } = require("../../helpers");
 
