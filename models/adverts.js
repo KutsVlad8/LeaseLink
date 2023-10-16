@@ -77,7 +77,7 @@ advertsSchema.post("save", handleMongooseError);
 
 const Adverts = model("adverts", advertsSchema);
 
-const addSchema = Joi.object({
+const createAdvertSchema = Joi.object({
   year: Joi.number().required(),
   make: Joi.string().required(),
   model: Joi.string().required(),
@@ -100,4 +100,27 @@ const addSchema = Joi.object({
   "any.required": "{{#label}} is required.",
 });
 
-module.exports = { Adverts, addSchema };
+const updateAdvertSchema = Joi.object({
+  year: Joi.number(),
+  make: Joi.string(),
+  model: Joi.string(),
+  type: Joi.string(),
+  img: Joi.string(),
+  description: Joi.string(),
+  fuelConsumption: Joi.string(),
+  engineSize: Joi.string(),
+  accessories: Joi.string(),
+  functionalities: Joi.string(),
+  rentalPrice: Joi.string(),
+  rentalCompany: Joi.string(),
+  address: Joi.string(),
+  rentalConditions: Joi.string(),
+  mileage: Joi.number(),
+  favorite: Joi.boolean(),
+}).messages({
+  "number.base": "{{#label}} must be a number.",
+  "string.base": "{{#label}} must be a string.",
+  "any.required": "{{#label}} is required.",
+});
+
+module.exports = { Adverts, createAdvertSchema, updateAdvertSchema };
