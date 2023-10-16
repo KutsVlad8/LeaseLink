@@ -4,10 +4,26 @@ const Joi = require("joi");
 const { HttpError } = require("../../helpers");
 
 const addSchema = Joi.object({
-  name: Joi.string().required(),
-  email: Joi.string().required(),
-  phone: Joi.string().required(),
-  favorite: Joi.boolean(),
+  year: Joi.number().required(),
+  make: Joi.string().required(),
+  model: Joi.string().required(),
+  type: Joi.string().required(),
+  img: Joi.string().required(),
+  description: Joi.string().required(),
+  fuelConsumption: Joi.string().required(),
+  engineSize: Joi.string().required(),
+  accessories: Joi.string().required(),
+  functionalities: Joi.string().required(),
+  rentalPrice: Joi.string().required(),
+  rentalCompany: Joi.string().required(),
+  address: Joi.string().required(),
+  rentalConditions: Joi.string().required(),
+  mileage: Joi.number().required(),
+  favorite: Joi.boolean().default(false),
+}).messages({
+  "number.base": "{{#label}} must be a number.",
+  "string.base": "{{#label}} must be a string.",
+  "any.required": "{{#label}} is required.",
 });
 
 const createAdvert = async (req, res) => {
