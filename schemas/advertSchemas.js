@@ -46,4 +46,8 @@ const updateAdvertSchema = Joi.object({
   "any.required": "{{#label}} is required.",
 });
 
-module.exports = { createAdvertSchema, updateAdvertSchema };
+const favoriteSchema = Joi.object({
+  favorite: Joi.boolean().required(),
+});
+
+module.exports = { createAdvertSchema, updateAdvertSchema, favoriteSchema };

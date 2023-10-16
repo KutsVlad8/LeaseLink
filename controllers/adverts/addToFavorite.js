@@ -1,19 +1,10 @@
 const Adverts = require("../../models/adverts");
-const Joi = require("joi");
 
 const { HttpError } = require("../../helpers");
-
-const favoriteSchema = Joi.object({
-  favorite: Joi.boolean().required(),
-});
 
 const addFavorite = async (req, res) => {
   // const { _id: owner } = req.user;
 
-  const { error } = favoriteSchema.validate(req.body);
-  if (error) {
-    throw HttpError(400, "missing field favorite");
-  }
   const { advertId } = req.params;
   const result = await Adverts.findOneAndUpdate({ _id: advertId }, req.body, {
     new: true,
